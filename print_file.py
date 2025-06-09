@@ -1,4 +1,13 @@
 #!/usr/bin/env python3
+"""
+print_file.py  –  tiny CUPS helper
+
+Usage examples
+--------------
+python print_file.py test.jpg     # print a JPEG
+python print_file.py demo.pdf     # print a PDF
+"""
+
 import mimetypes
 import os
 import sys
@@ -6,7 +15,9 @@ import sys
 import cups
 
 # 1. locate file
-path = "test.jpg"
+path = sys.argv[1] if len(sys.argv) > 1 else "test.jpg"
+if not os.path.isfile(path):
+    sys.exit(f"❌  File not found: {path}")
 
 mime, _ = mimetypes.guess_type(path)
 if mime is None:

@@ -1,4 +1,14 @@
 [project]
 name = "brother_print"
-version = "0.1.0"
-dependencies = ["pycups"]
+version = "0.1.1"
+description = "Tiny helper to send PDFs or JPEGs to a Brother HL‑L2325DW over CUPS"
+readme = "REDME.md"
+requires-python = ">=3.8"
+
+# Core runtime deps
+dependencies = [
+    "pycups>=2.0.1"
+]
+
+[project.scripts]
+brother-print = "print_pdf:main"  # exposes a CLI so you can run `brother-print <file>`
